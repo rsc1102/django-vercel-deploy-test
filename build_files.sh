@@ -10,10 +10,12 @@ python3.12 -m pip install --upgrade pip
 echo "Installing dependencies"
 python3.12 -m pip install -r requirements.txt
 
+echo "migrating tables into database"
+python3.12 manage.py makemigrations polls
+python3.12 manage.py migrate
+
 echo "Collecting static files"
 python3.12 manage.py collectstatic --no-input --clear
 
 echo "build_files.sh process complete. Folder list:"
 ls
-
-
