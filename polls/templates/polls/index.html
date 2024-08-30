@@ -12,57 +12,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-
-        <label for="item-input"></label>
-        <input id="item-input" type="text">
-        <button id="add-button">Add</button>
         
-        <ui id="List">
-            {% for item in items %}
-            <li>{{ item }}</li>
-            {% endfor %}
-        </ui>
-
-        <script async defer>
-            const List = document.getElementById("List");
-            const add_button = document.getElementById("add-button");
-            const item_input = document.getElementById("item-input");
-
-            add_button.onclick = () => {
-                if(item_input.value !== ""){
-                    data = {'item':item_input.value}
-                    // Using fetch to send the POST request
-                    fetch("{% url 'polls:add-item' %}", {
-                        method: 'POST', // Specify the method as POST
-                        headers: {
-                            'Content-Type': 'application/json', // Set the content type to JSON
-                            // Add other headers as needed
-                            'X-CSRFToken': "{{csrf_token }}" 
-                        },
-                        body: JSON.stringify(data) // Convert the data to a JSON string
-                    })
-                    .then(response => {
-                        // Handle the response
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok ' + response.statusText);
-                        }
-                        return response.json(); // Assuming the response is in JSON format
-                    })
-                    .then(data => {
-                        // Handle the data returned from the server
-                        console.log('Success:', data);
-                        const li = document.createElement('li');
-                        li.textContent = item_input.value;
-                        List.appendChild(li);
-                    })
-                    .catch(error => {
-                        // Handle errors
-                        console.error('Error:', error);
-                    });
-                }
-            }
-
-        </script>
-
+        <!-- <script src="" async defer></script> -->
     </body>
 </html>
