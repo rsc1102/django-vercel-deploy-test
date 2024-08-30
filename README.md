@@ -16,11 +16,11 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ```
-1. &lt;project-name>/wsgi.py:
+2. &lt;project-name>/wsgi.py:
 ```python 
 app = application
 ```
-1. vercel.json
+3. vercel.json
 ```json
 {
     "builds": [
@@ -46,7 +46,7 @@ app = application
     "outputDirectory": "staticfiles"
   }
 ```
-1. build_files.sh
+4. build_files.sh
 ```bash
 #!/usr/bin/env bash
 
